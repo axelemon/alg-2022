@@ -1,0 +1,49 @@
+package com.practice;
+
+import java.util.Random;
+
+public class Mass1zadanie {
+    public static void main(String[] args) {
+
+        int arr2[] = new int[20];
+        Random random = new Random();
+        int x = 0;  //сохраненное значение для сдвига элементов массива 2
+        System.out.print("Массив1: ");
+            for (int i = 0; i < arr2.length; i++) {
+            arr2[i] = random.nextInt(100 + 1) - 50;
+            System.out.print("| " + arr2[i] + " ");
+        }
+        //сама сортировка шейкера
+        int left = 1;
+        int right = arr2.length - 1;                 //границы проверки,
+        // влево до первого элемента,
+        // вправо до предпоследнего
+        do {
+            for (int i = right; i >= left; i--) {
+                if (arr2[i - 1] > arr2[i]) {
+                    x = arr2[i];
+                    arr2[i] = arr2[i - 1];
+                    arr2[i - 1] = x;
+                }
+            }
+            left++;
+            for (int i = left; i <= right; i++) {
+                if (arr2[i - 1] > arr2[i]) {
+                    x = arr2[i];
+                    arr2[i] = arr2[i - 1];
+                    arr2[i - 1] = x;
+                }
+            }
+            right--;
+
+
+        } while (left <= right);
+        System.out.print("\n" + "Сортировка шейкера: ");
+        for (int i = 0; i < arr2.length; i++) {
+            System.out.print("| " + arr2[i] + " ");
+        }
+
+    }
+
+
+}
